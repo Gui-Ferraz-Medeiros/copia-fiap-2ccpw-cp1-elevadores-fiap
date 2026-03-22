@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList } from 'react-native';
 import { Link } from 'expo-router';
 import CardElevador from '../components/CardElevador';
 
 export default function LocalizarElevador() {
   const [carregando, setCarregando] = useState(true);
+  const [elevadores, setElevadores] = useState([]);
+
+  // Dados fictícios para simular os elevadores da FIAP
+  const DATA = [
+    { id: '1', nome: 'Elevador A', andares: [1, 2, 4, 8], status: 'Subindo', andarAtual: 3 },
+    { id: '2', nome: 'Elevador B', andares: [6, 7, 9], status: 'Parado', andarAtual: 10 },
+    { id: '3', nome: 'Elevador C', andares: [1, 3, 5, 7, 9], status: 'Descendo', andarAtual: 2 },
+  ];
 
   // Simulação de carregamento de dados (Requisito: useEffect)
   useEffect(() => {
     const timer = setTimeout(() => {
+      setElevadores(DATA);
       setCarregando(false);
     }, 2000);
     return () => clearTimeout(timer);
@@ -28,15 +37,14 @@ export default function LocalizarElevador() {
             <Text style={styles.feedback}>Buscando elevadores próximos...</Text>
           </View>
         ) : (
-          <View>
-            {/* Exemplo de uso de Componentização */}
-            <CardElevador nome="Elevador Bloco A" andar="4" status="Subindo" />
-            <CardElevador nome="Elevador Bloco B" andar="Térreo" status="Parado" />
-            <CardElevador nome="Elevador Bloco C" andar="10" status="Descendo" />
-            
-            {/* Tratamento de estado vazio (Requisito extra) */}
-            {/* Se não houvesse nada, exibiríamos uma View com texto aqui */}
-          </View>
+          <FlatList
+            data={elevadores}
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => (
+              <CardElevador nome={item.nome} andares={item.andares} status={item.status} andarAtual={item.andarAtual} />
+            )}
+            ListEmptyComponent={<Text>Nenhum elevador operando agora.</Text>}
+          />
         )}
       </ScrollView>
 
