@@ -12,6 +12,24 @@
   - `"main": "expo-router/entry"`
 - [x] fix: `Link asChild` e flatten styles para evitar alerta `array de styles` no Expo Router
 
+## Funcionalidades Implementadas
+
+### Simulação de Elevadores
+- **8 elevadores** simulados com estados dinâmicos
+- **Movimento realista**: 2 segundos por andar
+- **Dispatch inteligente**: Prioriza elevador mais próximo, evita chamadas no mesmo andar
+- **Chamadas simultâneas**: 1-4 elevadores podem ser despachados ao mesmo tempo
+- **Estados visuais**: Parado, Subindo, Descendo, Ocupado
+
+### Barra de Progresso
+- **Visual feedback**: Barra animada durante transições de andar
+- **Gradiente rosa-verde**: De rosa FIAP (#ED145B) para verde (#00A859)
+- **Atualização em tempo real**: Progresso de 0% a 100% a cada 100ms
+- **Integração com movimento**: Aparece apenas durante movimento
+
+### Dependências Adicionadas
+- `expo-linear-gradient`: Para criar o gradiente na barra de progresso
+
 ## Como rodar:
 - npm install
 - npx expo start -c
