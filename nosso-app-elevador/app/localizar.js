@@ -7,21 +7,58 @@ export default function LocalizarElevador() {
   const [carregando, setCarregando] = useState(true);
   const [elevadores, setElevadores] = useState([]);
 
-  // Dados fictícios para simular os elevadores da FIAP
-  const DATA = [
-    { id: '1', nome: 'Elevador A', andares: [1, 2, 4, 8], status: 'Subindo', andarAtual: 3 },
-    { id: '2', nome: 'Elevador B', andares: [6, 7, 9], status: 'Parado', andarAtual: 10 },
-    { id: '3', nome: 'Elevador C', andares: [1, 3, 5, 7, 9], status: 'Descendo', andarAtual: 2 },
+  // Função para gerar andares aleatórios (1 a 4 andares únicos entre 1 e 10)
+  const gerarAndaresAleatorios = () => {
+    const numAndares = Math.floor(Math.random() * 4) + 1; // 1 a 4
+    const andares = [];
+    while (andares.length < numAndares) {
+      const andar = Math.floor(Math.random() * 10) + 1;
+      if (!andares.includes(andar)) {
+        andares.push(andar);
+      }
+    }
+    return andares.sort((a, b) => a - b);
+  };
+
+  // Dados iniciais dos elevadores
+  const inicializarElevadores = () => [
+    { id: '1', nome: 'Elevador A', andares: gerarAndaresAleatorios(), status: 'Parado', andarAtual: 1, indiceAtual: 0 },
+    { id: '2', nome: 'Elevador B', andares: gerarAndaresAleatorios(), status: 'Parado', andarAtual: 1, indiceAtual: 0 },
+    { id: '3', nome: 'Elevador C', andares: gerarAndaresAleatorios(), status: 'Parado', andarAtual: 1, indiceAtual: 0 },
   ];
 
-  // Simulação de carregamento de dados (Requisito: useEffect)
+  // Simulação de carregamento de dados
   useEffect(() => {
     const timer = setTimeout(() => {
-      setElevadores(DATA);
+      setElevadores(inicializarElevadores());
       setCarregando(false);
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
+
+  // Simulação de movimento em tempo real
+  useEffect(() => {
+    if (!carregando) {
+      const interval = setInterval(() => {
+        setElevadores(prevElevadores =>
+          prevElevadores.map(elevador => {
+            const { andares, indiceAtual, andarAtual } = elevador;
+            const proximoIndice = (indiceAtual + 1) % andares.length;
+            const proximoAndar = andares[proximoIndice];
+            const status = proximoAndar > andarAtual ? 'Subindo' : proximoAndar < andarAtual ? 'Descendo' : 'Parado';
+            return {
+              ...elevador,
+              andarAtual: proximoAndar,
+              indiceAtual: proximoIndice,
+              status,
+            };
+          })
+        );
+      }, 3000); // Atualiza a cada 3 segundos
+
+      return () => clearInterval(interval);
+    }
+  }, [carregando]);
 
   return (
     <View style={styles.container}>
