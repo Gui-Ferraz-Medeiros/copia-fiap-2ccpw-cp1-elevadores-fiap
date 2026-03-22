@@ -22,9 +22,9 @@ export default function LocalizarElevador() {
 
   // Dados iniciais dos elevadores
   const inicializarElevadores = () => [
-    { id: '1', nome: 'Elevador A', andares: gerarAndaresAleatorios(), status: 'Parado', andarAtual: 1 },
-    { id: '2', nome: 'Elevador B', andares: gerarAndaresAleatorios(), status: 'Parado', andarAtual: 1 },
-    { id: '3', nome: 'Elevador C', andares: gerarAndaresAleatorios(), status: 'Parado', andarAtual: 1 },
+    { id: '1', nome: 'Elevador A', andares: gerarAndaresAleatorios(), status: 'Parado', andarAtual: 1, indiceAtual: 0 },
+    { id: '2', nome: 'Elevador B', andares: gerarAndaresAleatorios(), status: 'Parado', andarAtual: 1, indiceAtual: 0 },
+    { id: '3', nome: 'Elevador C', andares: gerarAndaresAleatorios(), status: 'Parado', andarAtual: 1, indiceAtual: 0 },
   ].map(elevador => ({
     ...elevador,
     andarAtual: elevador.andares[0] || 1, // Andar atual é o primeiro da lista
@@ -38,6 +38,39 @@ export default function LocalizarElevador() {
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
+
+  // Simulação de movimento realista
+  useEffect(() => {
+    if (!carregando) {
+      const moverElevador = (elevador) => {
+        const { andares, indiceAtual, andarAtual } = elevador;
+        const proximoIndice = (indiceAtual + 1) % andares.length;
+        const proximoAndar = andares[proximoIndice];
+        const distancia = Math.abs(proximoAndar - andarAtual);
+        const tempo = distancia * 2000; // 2 segundos por andar
+
+        setTimeout(() => {
+          setElevadores(prev =>
+            prev.map(e =>
+              e.id === elevador.id
+                ? {
+                    ...e,
+                    andarAtual: proximoAndar,
+                    indiceAtual: proximoIndice,
+                    status: proximoAndar > e.andarAtual ? 'Subindo' : proximoAndar < e.andarAtual ? 'Descendo' : 'Parado',
+                  }
+                : e
+            )
+          );
+          // Agendar próximo movimento
+          moverElevador({ ...elevador, indiceAtual: proximoIndice, andarAtual: proximoAndar });
+        }, tempo);
+      };
+
+      // Iniciar movimento para cada elevador
+      elevadores.forEach(moverElevador);
+    }
+  }, [carregando, elevadores]);
 
   return (
     <View style={styles.container}>
