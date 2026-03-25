@@ -1,11 +1,31 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { Link } from 'expo-router';
+import { Link, Stack } from 'expo-router';
+
+import logoPrincipal from './img/logoprincipal.png';
+import fotoElevadores from './img/foto3elevadores.png';
 
 export default function Home() {
   return (
     <View style={styles.container}>
+{/*coloquei esse comando para sumir a palavra index no topo da pagina*/}
+    <Stack.Screen options={{ headerShown: false }} />
+
+      {/* Imagem de Fundo com a imagem do elevador para destaca*/}
+      <Image 
+        source={fotoElevadores} 
+        style={styles.imagemFundo}
+        resizeMode="cover"
+      />
+
+
       {/* Exemplo de uso de Image (Requisito) */}
       <View style={styles.header}>
+        {/* Imagem da Logo salva em img */}
+        <Image 
+          source={logoPrincipal} 
+          style={styles.logo}
+          resizeMode="contain"
+        />
         <Text style={styles.tituloApp}>FIAP Elevadores</Text>
       </View>
 
@@ -28,21 +48,60 @@ export default function Home() {
   );
 }
 
+// Ajustando o estilo do home 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff' },
+  container: { 
+    flex: 1, 
+    backgroundColor: '#000',
+    position: 'relative',
+  },
   header: { 
-    backgroundColor: '#ED145B', 
-    padding: 60, 
-    alignItems: 'center' 
+    backgroundColor: 'transparent', 
+    paddingTop: 80,
+    paddingBottom: 20, 
+    alignItems: 'center',
+    zIndex: 2 
   },
-  tituloApp: { color: '#fff', fontSize: 24, fontWeight: 'bold' },
-  menu: { padding: 20, gap: 15, marginTop: 20 },
-  botao: { 
-    backgroundColor: '#333', 
+  logo: {
+    width: '90%', 
+    height: 180,
+    marginBottom: 20,
+  },
+
+  tituloApp: { 
+    color: '#fff',       
+    fontSize: 28,        
+    fontWeight: 'bold',  
+    letterSpacing: 1,    
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+  },
+ 
+  imagemFundo: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    opacity: 0.12,
+    zIndex: 0,
+  },
+  menu: { 
+    flex: 1,
     padding: 20, 
-    borderRadius: 10, 
-    alignItems: 'center' 
+    gap: 20, 
+    justifyContent: 'center',
+    zIndex: 2 
   },
-  botaoRosa: { backgroundColor: '#ED145B' },
-  textoBotao: { color: '#fff', fontWeight: 'bold', fontSize: 16 }
+  botao: { 
+    backgroundColor: '#1C1C1C', 
+    padding: 22, 
+    borderRadius: 12, 
+    alignItems: 'center',
+  },
+  botaoRosa: { 
+    backgroundColor: '#ED145B' 
+  },
+  textoBotao: { 
+    color: '#fff', 
+    fontWeight: 'bold', 
+    fontSize: 18 
+  }
 });
