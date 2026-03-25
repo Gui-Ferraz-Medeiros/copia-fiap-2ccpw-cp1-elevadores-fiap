@@ -152,6 +152,8 @@ const escolhido = melhores[Math.floor(Math.random() * melhores.length)];
 
 ## 👨‍💻 Autores
 
-**Guilherme Ferraz Medeiros** - Desenvolvimento e implementação
+**Guilherme Ferraz Medeiros** - Desenvolvimento e implementação.
+**Roberto Marques Moreira** - Desenvolvimento, implementação e estilização.
+**Elly** - Desenvolvimento e implementação.
 
 ---
