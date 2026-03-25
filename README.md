@@ -11,7 +11,9 @@
 **Nome do aplicativo**: FIAP Elevadores
 
 Este aplicativo foi desenvolvido para solucionar de uma vez por todas o grande tumulto no hall dos elevadores da universidade.
+
 O aplicativo nos permite saber em qual andar cada elevador está programado para passar, dispensando a necessidade de um painel físico para colocar-mos o andar e sabermos qual elevador devemos utilizar.
+
 E também conseguimos agendar um elevador colocando informações simples como o horário e o andar que vamos.
 
 **Baseado no projeto disponível em:** [fiap-2ccpw-cp1-elevadores-fiap](https://github.com/robertomoreira/fiap-2ccpw-cp1-elevadores-fiap) 
@@ -55,6 +57,7 @@ nosso-app-elevador/
 │   └── CardElevador.js     # Componente de cartão do elevador
 ├── assets/                 # Recursos estáticos
 └── package.json            # Dependências e scripts
+```
 
 ## 👨‍💻 **b) Integrantes da equipe** 
 
@@ -115,11 +118,24 @@ nosso-app-elevador/
   
 ## 📋d) Demonstração
 
+### TELAS DO APLICATIVO
+
+**HOME**
+
+<img width="597" height="845" alt="image" src="https://github.com/user-attachments/assets/4aa68605-872d-4520-ae9b-33c096810deb" />
+
+**AGENDAR ELEVADOR**
+
+<img width="616" height="722" alt="image" src="https://github.com/user-attachments/assets/fdfc0b45-17e2-46ec-bb5d-efd9feca7445" />
+
+**LOCALIZAR ELEVADOR**
+
+<img width="601" height="872" alt="image" src="https://github.com/user-attachments/assets/36d165b3-3a0f-4c82-a70b-7a7a437f3973" />
+
+### VÍDEO DE DEMOSNTRAÇÃO
 
 
-
-
-
+![Demonstração do App](./nosso-app-elevador/img/demonstracaogif.gif)
 
 ## 🔧 Arquitetura e Algoritmos
 
