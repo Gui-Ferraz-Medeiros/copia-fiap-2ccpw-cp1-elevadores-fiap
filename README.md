@@ -4,15 +4,24 @@
 [![Expo](https://img.shields.io/badge/Expo-~55.0.8-black.svg)](https://expo.dev/)
 [![Expo Router](https://img.shields.io/badge/Expo%20Router-~55.0.7-orange.svg)](https://docs.expo.dev/router/introduction/)
 
-> **Projeto acadêmico** - Simulador avançado de sistema de elevadores desenvolvido para a disciplina de CPAD (FIAP)
+> **Projeto acadêmico** - Simulador de um sistema para agendamento e localização de elevadores desenvolvido para a disciplina de CPAD (FIAP)
 
-## 📋 Sobre o Projeto
+## 📋a) Sobre o Projeto 
 
-Esta aplicação React Native/Expo simula um sistema inteligente de elevadores com 8 unidades, implementando algoritmos de dispatch otimizados, interface visual rica e processamento paralelo de chamadas. O projeto demonstra conceitos avançados de gerenciamento de estado, animações e lógica de negócio em aplicações móveis.
+**Nome do aplicativo**: FIAP Elevadores
 
-**Baseado na cópia de:** [fiap-2ccpw-cp1-elevadores-fiap](https://github.com/robertomoreira/fiap-2ccpw-cp1-elevadores-fiap) 
+Este aplicativo foi desenvolvido para solucionar de uma vez por todas o grande tumulto no hall dos elevadores da universidade.
+O aplicativo nos permite saber em qual andar cada elevador está programado para passar, dispensando a necessidade de um painel físico para colocar-mos o andar e sabermos qual elevador devemos utilizar.
+E também conseguimos agendar um elevador colocando informações simples como o horário e o andar que vamos.
+
+**Baseado no projeto disponível em:** [fiap-2ccpw-cp1-elevadores-fiap](https://github.com/robertomoreira/fiap-2ccpw-cp1-elevadores-fiap) 
 
 ## ✨ Funcionalidades Principais
+
+## HOME 
+- **Acesso para as opções**
+- **AGENDAR ELEVADOR**
+- **LOCALIZAR ELEVADOR**
 
 ### 🏢 Simulação de Elevadores
 - **8 elevadores independentes** (A-H) com estados dinâmicos
@@ -20,12 +29,6 @@ Esta aplicação React Native/Expo simula um sistema inteligente de elevadores c
 - **Dispatch inteligente**: Algoritmo que prioriza elevador mais próximo ao destino
 - **Chamadas simultâneas**: Sistema processa 2-5 elevadores ao mesmo tempo
 - **Processamento paralelo**: Não bloqueia novas chamadas enquanto elevadores estão em movimento
-- **Desempate randômico**: Seleção aleatória entre elevadores com mesma proximidade
-- **Estados visuais completos**:
-  - 🟢 **Parado**: Elevador disponível
-  - 🔄 **Subindo/Descendo**: Em movimento
-  - 🔒 **Ocupado**: Atendendo chamada
-  - 🎯 **Cheguei!**: Feedback de chegada ao destino
 
 ### 🎨 Interface Visual
 - **Cores distintas por elevador**: Cada unidade A-H possui borda lateral colorida única
@@ -33,18 +36,11 @@ Esta aplicação React Native/Expo simula um sistema inteligente de elevadores c
 - **Feedback visual rico**: Estados, destinos e progresso em tempo real
 - **Design responsivo**: Adaptado para dispositivos móveis
 
-### ⚡ Sistema de Pedidos
-- **Geração automática**: 2-5 pedidos por ciclo (intervalo de 2-5 segundos)
-- **Fila inteligente**: Evita chamadas redundantes para andares já atendidos
-- **Processamento contínuo**: Novos pedidos atendidos imediatamente quando elevadores ficam disponíveis
-
-## 🛠️ Tecnologias Utilizadas
-
-- **React Native 0.83.2** - Framework principal
-- **Expo ~55.0.8** - Plataforma de desenvolvimento
-- **Expo Router ~55.0.7** - Navegação baseada em arquivos
-- **React 19.2.0** - Biblioteca de componentes
-- **expo-linear-gradient** - Gradientes visuais
+  ### Estados do Elevador
+- **Parado**: Disponível para novas chamadas
+- **Subindo/Descendo**: Em movimento (com barra de progresso)
+- **Ocupado**: Atendendo chamada (destino definido)
+- **Cheguei!**: Feedback temporário de chegada
 
 ## 📁 Estrutura do Projeto
 
@@ -59,8 +55,23 @@ nosso-app-elevador/
 │   └── CardElevador.js     # Componente de cartão do elevador
 ├── assets/                 # Recursos estáticos
 └── package.json            # Dependências e scripts
-```
 
+## 👨‍💻 **b) Integrantes da equipe** 
+
+**Guilherme Ferraz Medeiros** - RM 564743.
+**Roberto Marques Moreira** - RM 564935.
+**Anny Elly Pantoja** - RM : 565055 .
+
+## 📋**c) Como Rodar o projeto**
+
+## 🛠️ Tecnologias Utilizadas
+
+- **React Native 0.83.2** - Framework principal
+- **Expo ~55.0.8** - Plataforma de desenvolvimento
+- **Expo Router ~55.0.7** - Navegação baseada em arquivos
+- **React 19.2.0** - Biblioteca de componentes
+- **expo-linear-gradient** - Gradientes visuais
+- 
 ## 🚀 Instalação e Execução
 
 ### Pré-requisitos
@@ -98,6 +109,17 @@ nosso-app-elevador/
    - 2-5 elevadores são despachados simultaneamente
    - Acompanhe o progresso visual e estados em tempo real
    - Cada elevador tem cor distinta para fácil identificação
+3. **Agendar Elevador**:
+   - É possível informar o horário de chegada.
+   - Escolher o elevador entre A-H e agendar.
+  
+## 📋d) Demonstração
+
+
+
+
+
+
 
 ## 🔧 Arquitetura e Algoritmos
 
@@ -120,40 +142,6 @@ const melhores = distancias.filter(d => d.distancia === menorDistancia);
 const escolhido = melhores[Math.floor(Math.random() * melhores.length)];
 ```
 
-### Estados do Elevador
-- **Parado**: Disponível para novas chamadas
-- **Subindo/Descendo**: Em movimento (com barra de progresso)
-- **Ocupado**: Atendendo chamada (destino definido)
-- **Cheguei!**: Feedback temporário de chegada
-
-### ✅ Atualizações Implementadas (22:03)
-- [x] Estrutura Expo Router (pastas `app/`, `_layout.js`)
-- [x] Tela Home `app/index.js` com navegação `Link`
-- [x] Tela `app/localizar.js` com simulação `useEffect`
-- [x] Componente `components/CardElevador.js`
-- [x] Correções de import/case e configuração `package.json`
-- [x] Fix: `Link asChild` e flatten styles
-
-### 🚀 Funcionalidades Avançadas Adicionadas
-- [x] Barra de progresso com gradiente rosa-verde
-- [x] Cores distintas para elevadores A-H
-- [x] Feedback "Cheguei!" ao chegar no destino
-- [x] Processamento paralelo (não espera conclusão)
-- [x] Desempate randômico para seleção de elevadores
-- [x] Geração de 2-5 pedidos por ciclo
-- [x] Chamadas simultâneas de 2-5 elevadores
-
-
-
-
 
 <img width="615" height="900" alt="image" src="https://github.com/user-attachments/assets/7a0ebfb4-2da5-4386-b8c8-d12a671e1748" />
 
-
-## 👨‍💻 Autores
-
-**Guilherme Ferraz Medeiros** - Desenvolvimento e implementação.
-**Roberto Marques Moreira** - Desenvolvimento, implementação e estilização.
-**Elly** - Desenvolvimento e implementação.
-
----
