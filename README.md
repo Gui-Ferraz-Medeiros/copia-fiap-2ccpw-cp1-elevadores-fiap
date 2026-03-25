@@ -156,5 +156,31 @@ const menorDistancia = Math.min(...distancias.map(d => d.distancia));
 const melhores = distancias.filter(d => d.distancia === menorDistancia);
 const escolhido = melhores[Math.floor(Math.random() * melhores.length)];
 ```
+## 📋d) Decisões Técnicas
+**HOOKs**
+**OPÇÃO Agendar Elevador**: 
+- Utilizamos em "Agendar Elevador" o "useState" para criar memória e atualizar a tela quando selecionamos o andar.
+```
+export default function Agendar() {
+  const [carregando, setCarregando] = useState(true);
+      // amarzenamento de informações que mudam durante o uso da tela
+  const [andar, setAndar] = useState(null);
+  const [horario, setHorario] = useState('');
+  const [elevador, setElevador] = useState(null);
+  const [mensagem, setMensagem] = useState('Escolha um andar e horário');
+
+```
+
+- Utilizamos também em "Agendar Elevador" o "useEffect".
+- Usamos o eleevador como dependência, ou seja toda vez que o valor de elevador mudar, deve executar a função.
+  
+```
+useEffect(() => {
+  if (elevador) { setMensagem(`Elevador ${elevador} agendado!`); }
+}, [elevador]);
+```
+## 📋e) Próximos Passos
+- Implementar o cancelamento de agendamento
+- Fazer uma integração API dos elevadores.
 
 
