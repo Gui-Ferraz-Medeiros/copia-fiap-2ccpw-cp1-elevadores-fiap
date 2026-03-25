@@ -159,5 +159,3 @@ const escolhido = melhores[Math.floor(Math.random() * melhores.length)];
 ```
 
 
-<img width="615" height="900" alt="image" src="https://github.com/user-attachments/assets/7a0ebfb4-2da5-4386-b8c8-d12a671e1748" />
-
