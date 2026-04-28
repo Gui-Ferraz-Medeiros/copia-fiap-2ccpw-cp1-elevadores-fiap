@@ -147,11 +147,11 @@ nosso-app-elevador/
 
 **CADASTRO**
 
-<img width="597" height="845" alt="Cadastro" src="./nosso-app-elevador/app/img/register-screen.png" />
+
 
 **LOGIN**
 
-<img width="597" height="845" alt="Login" src="./nosso-app-elevador/app/img/login-screen.png" />
+
 
 **AGENDAR ELEVADOR**
 
