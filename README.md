@@ -145,14 +145,6 @@ nosso-app-elevador/
 
 <img width="597" height="845" alt="image" src="https://github.com/user-attachments/assets/4aa68605-872d-4520-ae9b-33c096810deb" />
 
-**CADASTRO**
-
-
-
-**LOGIN**
-
-
-
 **AGENDAR ELEVADOR**
 
 <img width="616" height="722" alt="image" src="https://github.com/user-attachments/assets/fdfc0b45-17e2-46ec-bb5d-efd9feca7445" />
