@@ -20,10 +20,18 @@ E também conseguimos agendar um elevador colocando informações simples como o
 
 ## ✨ Funcionalidades Principais
 
+### Autenticação e Cadastro
+- **Tela de cadastro** com RM, e-mail, senha e confirmação de senha
+- **Tela de login** com validação de e-mail e senha
+- **Persistência de sessão** usando `AsyncStorage`
+- **Logout** limpa a sessão e retorna à tela de login
+- **Fluxo inicial**: usuário não logado é redirecionado para cadastro/login
+
 ## HOME 
 - **Acesso para as opções**
 - **AGENDAR ELEVADOR**
 - **LOCALIZAR ELEVADOR**
+- **LOGOUT** disponível após login
 
 ### 🏢 Simulação de Elevadores
 - **8 elevadores independentes** (A-H) com estados dinâmicos
@@ -74,7 +82,8 @@ nosso-app-elevador/
 - **Expo Router ~55.0.7** - Navegação baseada em arquivos
 - **React 19.2.0** - Biblioteca de componentes
 - **expo-linear-gradient** - Gradientes visuais
-- 
+- **@react-native-async-storage/async-storage** - Armazenamento persistente de sessão e dados
+
 ## 🚀 Instalação e Execução
 
 ### Pré-requisitos
