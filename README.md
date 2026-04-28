@@ -21,11 +21,15 @@ E também conseguimos agendar um elevador colocando informações simples como o
 ## ✨ Funcionalidades Principais
 
 ### Autenticação e Cadastro
-- **Tela de cadastro** com RM, e-mail, senha e confirmação de senha
-- **Tela de login** com validação de e-mail e senha
-- **Persistência de sessão** usando `AsyncStorage`
+- **Tela de cadastro** com campos:
+  - RM (ex: `RM123456`)
+  - E-mail válido
+  - Senha com mínimo de 6 caracteres
+  - Confirmação de senha igual à senha
+- **Tela de login** com validação explícita dos campos e mensagens inline de erro
+- **Persistência de sessão** usando `AsyncStorage` para manter o usuário logado entre reinícios
 - **Logout** limpa a sessão e retorna à tela de login
-- **Fluxo inicial**: usuário não logado é redirecionado para cadastro/login
+- **Fluxo inicial**: usuário não logado é redirecionado para cadastro/login antes de acessar Home
 
 ## HOME 
 - **Acesso para as opções**
@@ -115,15 +119,23 @@ nosso-app-elevador/
 
 ## 🎮 Como Usar
 
-1. **Tela Inicial**: Navegue entre "Agendar Elevador" e "Localizar Elevador"
-2. **Localizar Elevador**: Observe a simulação automática
+1. **Cadastro**: Na primeira execução, crie sua conta com:
+   - RM (por exemplo, `RM123456`)
+   - E-mail válido
+   - Senha com pelo menos 6 caracteres
+   - Confirmação de senha idêntica
+2. **Login**: Informe seu e-mail e senha para acessar o app.
+   - Se já estiver logado em sessão anterior, o app entra direto na Home
+3. **Tela Inicial**: Após o login, navegue entre "Agendar Elevador" e "Localizar Elevador"
+4. **Localizar Elevador**: Observe a simulação automática
    - Pedidos são gerados automaticamente a cada 2-5 segundos
    - 2-5 elevadores são despachados simultaneamente
    - Acompanhe o progresso visual e estados em tempo real
    - Cada elevador tem cor distinta para fácil identificação
-3. **Agendar Elevador**:
-   - É possível informar o horário de chegada.
-   - Escolher o elevador entre A-H e agendar.
+5. **Agendar Elevador**:
+   - Informe o horário de chegada
+   - Selecione o andar desejado
+   - Confirme para agendar um elevador disponível
   
 ## 📋d) Demonstração
 
@@ -132,6 +144,14 @@ nosso-app-elevador/
 **HOME**
 
 <img width="597" height="845" alt="image" src="https://github.com/user-attachments/assets/4aa68605-872d-4520-ae9b-33c096810deb" />
+
+**CADASTRO**
+
+<img width="597" height="845" alt="Cadastro" src="./nosso-app-elevador/app/img/register-screen.png" />
+
+**LOGIN**
+
+<img width="597" height="845" alt="Login" src="./nosso-app-elevador/app/img/login-screen.png" />
 
 **AGENDAR ELEVADOR**
 

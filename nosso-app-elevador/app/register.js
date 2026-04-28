@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useRouter, Link } from 'expo-router';
+import { useRouter, Link, Stack } from 'expo-router';
 
 const USER_STORAGE_KEY = '@fiapElevador:user';
 const SESSION_STORAGE_KEY = '@fiapElevador:session';
@@ -53,7 +53,7 @@ export default function Register() {
     }
 
     setErrors(newErrors);
-  }, [name, email, password, confirmPassword]);
+  }, [rm, email, password, confirmPassword]);
 
   const handleRegister = async () => {
     if (Object.keys(errors).length > 0) {
@@ -85,6 +85,7 @@ export default function Register() {
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <Stack.Screen options={{ title: 'Cadastrar' }} />
       <View style={styles.card}>
         <Text style={styles.title}>Cadastro</Text>
 
