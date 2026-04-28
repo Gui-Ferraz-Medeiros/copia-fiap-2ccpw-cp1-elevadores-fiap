@@ -141,7 +141,7 @@ nosso-app-elevador/
 
 <img width="601" height="872" alt="image" src="https://github.com/user-attachments/assets/36d165b3-3a0f-4c82-a70b-7a7a437f3973" />
 
-### VÍDEO DE DEMOSNTRAÇÃO
+### VÍDEO DE DEMONSTRAÇÃO
 
 ![Demonstração do App](./nosso-app-elevador/app/img/demonstracaogif.gif)
 
